@@ -5,7 +5,12 @@ const Logger = require('./loaders/logger')
 const app = express()
 
 app.get('/', (req, res) => {
-  res.send('Hello')
+  try {
+    // throw new Error('foo')
+    return res.status(200).send('Hello')
+  } catch (error) {
+    return res.status(500).send('Internal server error')
+  }
 })
 
 app.listen(config.port, err => {
@@ -20,3 +25,5 @@ app.listen(config.port, err => {
         `)
   }
 })
+
+module.exports = app
