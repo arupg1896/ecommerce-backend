@@ -20,6 +20,19 @@ module.exports = {
   **/
   logs: {
     level: process.env.LOG_LEVEL || 'silly'
-  }
+  },
+
+  /**
+   * Used by api prefix
+  **/
+
+  api: {
+    prefix: '/api'
+  },
+
+  /**
+    * That long string from mlab
+  **/
+  databaseURL: process.env.MONGODB_URI
 
 }

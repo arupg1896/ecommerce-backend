@@ -1,17 +1,18 @@
 const express = require('express')
-const path = require('path')
 const config = require('./config')
 const Logger = require('./loaders/logger')
 
 const app = express()
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'ejs')
+// Load all routes
+require('./routes/index')(app)
+require('./loaders/index')(app)
 
+// test routes start
 app.get('/', (req, res) => {
-  return res.render('home')
+  return res.send('home')
 })
+// test routes end
 
 app.listen(config.port, err => {
   if (err) {
